@@ -1,7 +1,10 @@
 from lib import Simulation
 
-sim = Simulation(n_excited = 1, n_sites = 12) # Create a new simulation 
-print(sim.get_current_state())
-sim.apply_cycle()
-state = sim.get_current_state()
-print(state[:, None])
+sim = Simulation(n_excited = 3, n_sites = 8, debug = True) # Create a new simulation 
+
+for i in range(0, 51):
+    print(i, end='    ') 
+    probability = sim.apply_obs()
+    print(probability)
+    sim.apply_cycle()
+
